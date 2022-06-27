@@ -10,11 +10,24 @@ class ProfileView extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('ProfileView'),
-        centerTitle: true,
+      body: Row(
+        children: [
+          const Expanded(flex: 2, child: Sidebar()),
+          Expanded(
+              flex: 15,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: Get.height * 0.1,
+                  ),
+                  Container(
+                    height: Get.height - 100,
+                    color: Colors.white,
+                  )
+                ],
+              ))
+        ],
       ),
-      body: Sidebar(),
     );
   }
 }
