@@ -17,7 +17,9 @@ class HomeView extends GetView<HomeController> {
       backgroundColor: Colors.blue[100],
       body: Row(
         children: [
-          const Expanded(flex: 2, child: Sidebar()),
+          !context.isPhone
+              ? const Expanded(flex: 2, child: Sidebar())
+              : const SizedBox(),
           Expanded(
             flex: 15,
             child: Column(
