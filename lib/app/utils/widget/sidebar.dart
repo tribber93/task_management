@@ -62,10 +62,7 @@ class Sidebar extends StatelessWidget {
                           )
                         ],
                       ),
-                      onTap: () {
-                        Get.back();
-                        Get.toNamed(Routes.HOME);
-                      },
+                      onTap: () => Get.toNamed(Routes.HOME),
                     ),
                   ),
                 ),
@@ -100,10 +97,7 @@ class Sidebar extends StatelessWidget {
                           )
                         ],
                       ),
-                      onTap: () {
-                        Get.back();
-                        Get.toNamed(Routes.TASK);
-                      },
+                      onTap: () => Get.toNamed(Routes.TASK),
                     ),
                   ),
                 ),
@@ -138,10 +132,7 @@ class Sidebar extends StatelessWidget {
                           )
                         ],
                       ),
-                      onTap: () {
-                        Get.back();
-                        Get.toNamed(Routes.FRIENDS);
-                      },
+                      onTap: () => Get.toNamed(Routes.FRIENDS),
                     ),
                   ),
                 ),
@@ -176,10 +167,7 @@ class Sidebar extends StatelessWidget {
                           )
                         ],
                       ),
-                      onTap: () {
-                        Get.back();
-                        Get.toNamed(Routes.PROFILE);
-                      },
+                      onTap: () => Get.toNamed(Routes.PROFILE),
                     ),
                   ),
                 ),
