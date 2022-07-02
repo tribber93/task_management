@@ -33,7 +33,7 @@ class UpcomingTask extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.all(10),
                       padding: const EdgeInsets.all(15),
-                      height: 200,
+                      height: 150,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: CustomColor.cardBg,
@@ -114,7 +114,7 @@ class UpcomingTask extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.all(10),
                       padding: const EdgeInsets.all(15),
-                      height: 200,
+                      height: 150,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: CustomColor.cardBg,
@@ -195,7 +195,7 @@ class UpcomingTask extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.all(10),
                       padding: const EdgeInsets.all(15),
-                      height: 200,
+                      height: 150,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: CustomColor.cardBg,
