@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../style/custom_colors.dart';
 
@@ -11,20 +12,20 @@ class UpcomingTask extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Upcoming Task',
-              style: TextStyle(
-                color: CustomColor.primaryText,
-                fontSize: 30,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Upcoming Task',
+                style: TextStyle(
+                  color: CustomColor.primaryText,
+                  fontSize: 30,
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            SingleChildScrollView(
-              child: SizedBox(
-                height: 300,
+              const SizedBox(height: 20),
+              SizedBox(
+                height: 400,
                 child: ListView(
                   physics: const AlwaysScrollableScrollPhysics(),
                   scrollDirection: Axis.vertical,
@@ -276,8 +277,8 @@ class UpcomingTask extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
