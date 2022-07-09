@@ -112,10 +112,11 @@ class ProfileView extends GetView<ProfileController> {
                         : const EdgeInsets.all(10),
                     margin: !context.isPhone ? const EdgeInsets.all(10) : null,
                     decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: !context.isPhone
-                            ? BorderRadius.circular(50)
-                            : BorderRadius.circular(30)),
+                      color: Colors.white,
+                      borderRadius: !context.isPhone
+                          ? BorderRadius.circular(50)
+                          : BorderRadius.circular(30),
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [

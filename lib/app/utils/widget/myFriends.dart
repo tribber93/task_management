@@ -49,9 +49,9 @@ class MyFriends extends StatelessWidget {
               height: 400,
               child: GridView.builder(
                 shrinkWrap: true,
-                itemCount: 8,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
+                itemCount: 10,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: !context.isPhone ? 4 : 2,
                     crossAxisSpacing: 20,
                     mainAxisSpacing: 20),
                 itemBuilder: (context, index) {
@@ -62,7 +62,7 @@ class MyFriends extends StatelessWidget {
                         child: const Image(
                           image: NetworkImage(
                               'https://pbs.twimg.com/profile_images/1488749186610728960/4POimDrS_400x400.jpg'),
-                          height: 75,
+                          height: 159,
                         ),
                       ),
                       const Text(
