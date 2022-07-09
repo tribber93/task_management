@@ -130,7 +130,8 @@ class FriendsView extends GetView<FriendsController> {
                                             'https://pbs.twimg.com/profile_images/1488749186610728960/4POimDrS_400x400.jpg'),
                                       ),
                                     ),
-                                    Positioned(
+                                    const Positioned(
+                                      bottom: 10,
                                       child: Text(
                                         'Ninja Hatori',
                                         style: TextStyle(
@@ -157,9 +158,10 @@ class FriendsView extends GetView<FriendsController> {
                                           ],
                                         ),
                                       ),
-                                      bottom: 10,
                                     ),
                                     Positioned(
+                                      bottom: 0,
+                                      right: 0,
                                       child: SizedBox(
                                         height: 36,
                                         width: 36,
@@ -171,13 +173,11 @@ class FriendsView extends GetView<FriendsController> {
                                             ),
                                             padding: EdgeInsets.zero,
                                           ),
-                                          child:
-                                              Icon(Ionicons.add_circle_outline),
+                                          child: const Icon(
+                                              Ionicons.add_circle_outline),
                                           onPressed: () {},
                                         ),
                                       ),
-                                      bottom: 0,
-                                      right: 0,
                                     )
                                   ],
                                 ),
@@ -185,7 +185,7 @@ class FriendsView extends GetView<FriendsController> {
                             },
                           ),
                         ),
-                        MyFriends(),
+                        const MyFriends(),
                       ],
                     ),
                   ),

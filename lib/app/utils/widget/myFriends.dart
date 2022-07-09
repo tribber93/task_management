@@ -51,7 +51,12 @@ class MyFriends extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: 10,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: !context.isPhone ? 4 : 2,
+                    crossAxisCount:
+                        Get.currentRoute == Routes.FRIENDS && !context.isPhone
+                            ? 4
+                            : !context.isPhone
+                                ? 3
+                                : 2,
                     crossAxisSpacing: 20,
                     mainAxisSpacing: 20),
                 itemBuilder: (context, index) {
@@ -59,10 +64,11 @@ class MyFriends extends StatelessWidget {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(100),
-                        child: const Image(
-                          image: NetworkImage(
+                        child: Image(
+                          image: const NetworkImage(
                               'https://pbs.twimg.com/profile_images/1488749186610728960/4POimDrS_400x400.jpg'),
-                          height: 159,
+                          height:
+                              Get.currentRoute == Routes.FRIENDS ? 200 : 159,
                         ),
                       ),
                       const Text(
