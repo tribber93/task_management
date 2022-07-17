@@ -60,7 +60,7 @@ class HomeView extends GetView<HomeController> {
                                     ),
                                   ),
                                   Text(
-                                    'Menjadi mudah dengan Task Management',
+                                    'Task management terbaik',
                                     style: TextStyle(
                                       fontSize: 13,
                                       color: CustomColor.primaryText,

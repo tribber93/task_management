@@ -64,11 +64,10 @@ class MyFriends extends StatelessWidget {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(100),
-                        child: Image(
-                          image: const NetworkImage(
+                        child: const Image(
+                          image: NetworkImage(
                               'https://pbs.twimg.com/profile_images/1488749186610728960/4POimDrS_400x400.jpg'),
-                          height:
-                              Get.currentRoute == Routes.FRIENDS ? 200 : 159,
+                          height: 159,
                         ),
                       ),
                       const Text(

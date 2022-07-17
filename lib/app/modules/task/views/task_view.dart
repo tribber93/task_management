@@ -59,7 +59,7 @@ class TaskView extends GetView<TaskController> {
                                   ),
                                 ),
                                 Text(
-                                  'Menjadi mudah dengan Task Management',
+                                  'Task management terbaik',
                                   style: TextStyle(
                                     fontSize: 13,
                                     color: CustomColor.primaryText,

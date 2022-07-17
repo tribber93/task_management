@@ -59,7 +59,7 @@ class FriendsView extends GetView<FriendsController> {
                                   ),
                                 ),
                                 Text(
-                                  'Menjadi mudah dengan Task Management',
+                                  'Task management terbaik',
                                   style: TextStyle(
                                     fontSize: 13,
                                     color: CustomColor.primaryText,
