@@ -5,10 +5,14 @@ import 'package:get/get.dart';
 
 import 'app/routes/app_pages.dart';
 import 'app/utils/gesture.dart';
+import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    name: 'task management app',
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(
     GetMaterialApp(
       title: "Application",
