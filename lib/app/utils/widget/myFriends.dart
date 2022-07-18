@@ -67,7 +67,7 @@ class MyFriends extends StatelessWidget {
                         child: const Image(
                           image: NetworkImage(
                               'https://pbs.twimg.com/profile_images/1488749186610728960/4POimDrS_400x400.jpg'),
-                          height: 159,
+                          height: 155,
                         ),
                       ),
                       const Text(

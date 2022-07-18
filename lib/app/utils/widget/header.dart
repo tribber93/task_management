@@ -17,7 +17,7 @@ class Header extends StatelessWidget {
       height: Get.height * 0.1,
       child: Padding(
         //
-        padding: const EdgeInsets.only(left: 15, right: 30, top: 20),
+        padding: const EdgeInsets.only(left: 15, right: 30, top: 15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -27,11 +27,11 @@ class Header extends StatelessWidget {
                 Text(
                   'Task Management',
                   style:
-                      TextStyle(fontSize: 20, color: CustomColor.primaryText),
+                      TextStyle(fontSize: 19, color: CustomColor.primaryText),
                 ),
                 Text('Menjadi mudah dengan Task Management',
                     style:
-                        TextStyle(fontSize: 15, color: CustomColor.primaryText))
+                        TextStyle(fontSize: 14, color: CustomColor.primaryText))
               ],
             ),
             const Spacer(

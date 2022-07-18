@@ -18,182 +18,185 @@ class FriendsView extends GetView<FriendsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _drawerKey,
-      drawer: const Sidebar(),
+      drawer: const SizedBox(width: 150, child: Sidebar()),
       backgroundColor: CustomColor.primaryBg,
-      body: Row(
-        children: [
-          !context.isPhone
-              ? const Expanded(flex: 2, child: Sidebar())
-              : const SizedBox(),
-          Expanded(
-            flex: 15,
-            child: Column(
-              children: [
-                //Bagian Header
-                !context.isPhone
-                    ? const Header()
-                    : Container(
-                        padding: const EdgeInsets.all(20),
-                        child: Row(
-                          children: [
-                            IconButton(
-                              onPressed: () {
-                                _drawerKey.currentState!.openDrawer();
-                              },
-                              icon: const Icon(
-                                Ionicons.menu,
+      body: SafeArea(
+        child: Row(
+          children: [
+            !context.isPhone
+                ? const Expanded(flex: 2, child: Sidebar())
+                : const SizedBox(),
+            Expanded(
+              flex: 15,
+              child: Column(
+                children: [
+                  //Bagian Header
+                  !context.isPhone
+                      ? const Header()
+                      : Container(
+                          padding: const EdgeInsets.all(20),
+                          child: Row(
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  _drawerKey.currentState!.openDrawer();
+                                },
+                                icon: const Icon(
+                                  Ionicons.menu,
+                                  color: CustomColor.primaryText,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 7,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  Text(
+                                    'Task Management',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: CustomColor.primaryText,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Task management terbaik',
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      color: CustomColor.primaryText,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const Spacer(),
+                              const Icon(
+                                Ionicons.notifications,
                                 color: CustomColor.primaryText,
+                                size: 25,
                               ),
-                            ),
-                            const SizedBox(
-                              width: 7,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Text(
-                                  'Task Management',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: CustomColor.primaryText,
-                                  ),
-                                ),
-                                Text(
-                                  'Task management terbaik',
-                                  style: TextStyle(
-                                    fontSize: 13,
-                                    color: CustomColor.primaryText,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const Spacer(),
-                            const Icon(
-                              Ionicons.notifications,
-                              color: CustomColor.primaryText,
-                              size: 25,
-                            ),
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(30),
-                              child: const CircleAvatar(
-                                backgroundColor: Colors.amber,
-                                radius: 25,
-                                foregroundImage: NetworkImage(
-                                    'https://pbs.twimg.com/profile_images/1488749186610728960/4POimDrS_400x400.jpg'),
+                              const SizedBox(
+                                width: 15,
                               ),
-                            )
-                          ],
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(30),
+                                child: const CircleAvatar(
+                                  backgroundColor: Colors.amber,
+                                  radius: 25,
+                                  foregroundImage: NetworkImage(
+                                      'https://pbs.twimg.com/profile_images/1488749186610728960/4POimDrS_400x400.jpg'),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
+                  // Bagian Isi
+                  Expanded(
+                    child: Container(
+                      padding: !context.isPhone
+                          ? const EdgeInsets.all(30)
+                          : const EdgeInsets.all(10),
+                      margin:
+                          !context.isPhone ? const EdgeInsets.all(10) : null,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: !context.isPhone
+                            ? BorderRadius.circular(50)
+                            : BorderRadius.circular(30),
                       ),
-                // Bagian Isi
-                Expanded(
-                  child: Container(
-                    padding: !context.isPhone
-                        ? const EdgeInsets.all(30)
-                        : const EdgeInsets.all(10),
-                    margin: !context.isPhone ? const EdgeInsets.all(10) : null,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: !context.isPhone
-                          ? BorderRadius.circular(50)
-                          : BorderRadius.circular(30),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'People You May Know',
-                          style: TextStyle(
-                            fontSize: 30,
-                            color: CustomColor.primaryText,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'People You May Know',
+                            style: TextStyle(
+                              fontSize: 30,
+                              color: CustomColor.primaryText,
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 200,
-                          child: ListView.builder(
-                            itemCount: 10,
-                            clipBehavior: Clip.antiAlias,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Stack(
-                                  alignment: Alignment.center,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(50),
-                                      child: const Image(
-                                        image: NetworkImage(
-                                            'https://pbs.twimg.com/profile_images/1488749186610728960/4POimDrS_400x400.jpg'),
-                                      ),
-                                    ),
-                                    const Positioned(
-                                      bottom: 10,
-                                      child: Text(
-                                        'Ninja Hatori',
-                                        style: TextStyle(
-                                          inherit: true,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          shadows: [
-                                            Shadow(
-                                                // bottomLeft
-                                                offset: Offset(-1.5, -1.5),
-                                                color: Colors.black),
-                                            Shadow(
-                                                // bottomRight
-                                                offset: Offset(1.5, -1.5),
-                                                color: Colors.black),
-                                            Shadow(
-                                                // topRight
-                                                offset: Offset(1.5, 1.5),
-                                                color: Colors.black),
-                                            Shadow(
-                                                // topLeft
-                                                offset: Offset(-1.5, 1.5),
-                                                color: Colors.black),
-                                          ],
+                          SizedBox(
+                            height: 200,
+                            child: ListView.builder(
+                              itemCount: 10,
+                              clipBehavior: Clip.antiAlias,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Stack(
+                                    alignment: Alignment.center,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(50),
+                                        child: const Image(
+                                          image: NetworkImage(
+                                              'https://pbs.twimg.com/profile_images/1488749186610728960/4POimDrS_400x400.jpg'),
                                         ),
                                       ),
-                                    ),
-                                    Positioned(
-                                      bottom: 0,
-                                      right: 0,
-                                      child: SizedBox(
-                                        height: 36,
-                                        width: 36,
-                                        child: ElevatedButton(
-                                          style: ElevatedButton.styleFrom(
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(50),
-                                            ),
-                                            padding: EdgeInsets.zero,
+                                      const Positioned(
+                                        bottom: 10,
+                                        child: Text(
+                                          'Ninja Hatori',
+                                          style: TextStyle(
+                                            inherit: true,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            shadows: [
+                                              Shadow(
+                                                  // bottomLeft
+                                                  offset: Offset(-1.5, -1.5),
+                                                  color: Colors.black),
+                                              Shadow(
+                                                  // bottomRight
+                                                  offset: Offset(1.5, -1.5),
+                                                  color: Colors.black),
+                                              Shadow(
+                                                  // topRight
+                                                  offset: Offset(1.5, 1.5),
+                                                  color: Colors.black),
+                                              Shadow(
+                                                  // topLeft
+                                                  offset: Offset(-1.5, 1.5),
+                                                  color: Colors.black),
+                                            ],
                                           ),
-                                          child: const Icon(
-                                              Ionicons.add_circle_outline),
-                                          onPressed: () {},
                                         ),
                                       ),
-                                    )
-                                  ],
-                                ),
-                              );
-                            },
+                                      Positioned(
+                                        bottom: 0,
+                                        right: 0,
+                                        child: SizedBox(
+                                          height: 36,
+                                          width: 36,
+                                          child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(50),
+                                              ),
+                                              padding: EdgeInsets.zero,
+                                            ),
+                                            child: const Icon(
+                                                Ionicons.add_circle_outline),
+                                            onPressed: () {},
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                );
+                              },
+                            ),
                           ),
-                        ),
-                        const MyFriends(),
-                      ],
+                          const MyFriends(),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          )
-        ],
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

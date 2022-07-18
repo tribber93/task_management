@@ -26,7 +26,7 @@ class MyTask extends StatelessWidget {
             height: 2,
           ),
           SizedBox(
-            height: 175,
+            height: 170,
             child: ListView(
               physics: const AlwaysScrollableScrollPhysics(),
               scrollDirection: Axis.horizontal,
