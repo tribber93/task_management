@@ -74,7 +74,7 @@ class MyTask extends StatelessWidget {
                           ),
                           const Spacer(),
                           Container(
-                            height: 15,
+                            height: 20,
                             width: 80,
                             color: CustomColor.primaryBg,
                             child: const Center(
@@ -90,7 +90,7 @@ class MyTask extends StatelessWidget {
                       const Spacer(),
                       Container(
                         height: 25,
-                        width: 80,
+                        width: 100,
                         color: CustomColor.primaryBg,
                         child: const Center(
                             child: Text(
@@ -155,7 +155,7 @@ class MyTask extends StatelessWidget {
                           ),
                           const Spacer(),
                           Container(
-                            height: 15,
+                            height: 20,
                             width: 80,
                             color: CustomColor.primaryBg,
                             child: const Center(
@@ -171,7 +171,7 @@ class MyTask extends StatelessWidget {
                       const Spacer(),
                       Container(
                         height: 25,
-                        width: 80,
+                        width: 100,
                         color: CustomColor.primaryBg,
                         child: const Center(
                             child: Text(
@@ -236,7 +236,7 @@ class MyTask extends StatelessWidget {
                           ),
                           const Spacer(),
                           Container(
-                            height: 15,
+                            height: 20,
                             width: 80,
                             color: CustomColor.primaryBg,
                             child: const Center(
@@ -252,7 +252,7 @@ class MyTask extends StatelessWidget {
                       const Spacer(),
                       Container(
                         height: 25,
-                        width: 80,
+                        width: 100,
                         color: CustomColor.primaryBg,
                         child: const Center(
                             child: Text(
@@ -317,7 +317,7 @@ class MyTask extends StatelessWidget {
                           ),
                           const Spacer(),
                           Container(
-                            height: 15,
+                            height: 20,
                             width: 80,
                             color: CustomColor.primaryBg,
                             child: const Center(
@@ -333,7 +333,7 @@ class MyTask extends StatelessWidget {
                       const Spacer(),
                       Container(
                         height: 25,
-                        width: 80,
+                        width: 100,
                         color: CustomColor.primaryBg,
                         child: const Center(
                             child: Text(

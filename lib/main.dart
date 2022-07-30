@@ -16,16 +16,20 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   Get.put(AuthController(), permanent: true);
-  runApp(StreamBuilder<User?>(builder: (context, snapshot) {
-    if (snapshot.connectionState == ConnectionState.waiting) {
-      return const Center(child: CircularProgressIndicator());
-    }
-    return GetMaterialApp(
-      title: "My Task Management",
-      initialRoute: snapshot.data != null ? Routes.HOME : Routes.LOGIN,
-      getPages: AppPages.routes,
-      debugShowCheckedModeBanner: false,
-      scrollBehavior: MyCustomScrollBehavior(),
-    );
-  }));
+  runApp(
+    StreamBuilder<User?>(
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        return GetMaterialApp(
+          title: "My Task Management",
+          initialRoute: snapshot.data != null ? Routes.HOME : Routes.LOGIN,
+          getPages: AppPages.routes,
+          debugShowCheckedModeBanner: false,
+          scrollBehavior: MyCustomScrollBehavior(),
+        );
+      },
+    ),
+  );
 }

@@ -89,7 +89,7 @@ class UpcomingTask extends StatelessWidget {
                           const Spacer(),
                           Container(
                             height: 25,
-                            width: 80,
+                            width: 100,
                             color: CustomColor.primaryBg,
                             child: const Center(
                                 child: Text(
@@ -170,7 +170,7 @@ class UpcomingTask extends StatelessWidget {
                           const Spacer(),
                           Container(
                             height: 25,
-                            width: 80,
+                            width: 100,
                             color: CustomColor.primaryBg,
                             child: const Center(
                                 child: Text(
@@ -251,7 +251,7 @@ class UpcomingTask extends StatelessWidget {
                           const Spacer(),
                           Container(
                             height: 25,
-                            width: 80,
+                            width: 100,
                             color: CustomColor.primaryBg,
                             child: const Center(
                                 child: Text(
