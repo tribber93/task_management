@@ -1,14 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:task_management/app/routes/app_pages.dart';
 
+import '../../data/controller/auth_controller.dart';
 import '../style/custom_colors.dart';
 
 class MyFriends extends StatelessWidget {
-  const MyFriends({
-    Key? key,
-  }) : super(key: key);
+  final authCon = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -47,34 +47,58 @@ class MyFriends extends StatelessWidget {
             ),
             SizedBox(
               height: 400,
-              child: GridView.builder(
-                shrinkWrap: true,
-                itemCount: 10,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount:
-                        Get.currentRoute == Routes.FRIENDS && !context.isPhone
+              child: StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
+                stream: authCon.streamFriends(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+
+                  var myFriends = (snapshot.data!.data()
+                      as Map<String, dynamic>)['emailFriends'] as List;
+
+                  return GridView.builder(
+                    shrinkWrap: true,
+                    itemCount: myFriends.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: Get.currentRoute == Routes.FRIENDS &&
+                                !context.isPhone
                             ? 4
                             : !context.isPhone
                                 ? 3
                                 : 2,
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 20),
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(100),
-                        child: const Image(
-                          image: NetworkImage(
-                              'https://pbs.twimg.com/profile_images/1488749186610728960/4POimDrS_400x400.jpg'),
-                          height: 155,
-                        ),
-                      ),
-                      const Text(
-                        'Ninja Hatori',
-                        style: TextStyle(color: CustomColor.primaryText),
-                      )
-                    ],
+                        crossAxisSpacing: 20,
+                        mainAxisSpacing: 20),
+                    itemBuilder: (context, index) {
+                      return StreamBuilder<
+                              DocumentSnapshot<Map<String, dynamic>>>(
+                          stream: authCon.streamUsers(myFriends[index]),
+                          builder: (context, snapshot2) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return const Center(
+                                  child: CircularProgressIndicator());
+                            }
+                            var data = snapshot2.data!.data();
+
+                            return Column(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(100),
+                                  child: Image(
+                                    image: NetworkImage(data!['photo']),
+                                    height: 155,
+                                  ),
+                                ),
+                                Text(
+                                  data['name'],
+                                  style: const TextStyle(
+                                      color: CustomColor.primaryText),
+                                )
+                              ],
+                            );
+                          });
+                    },
                   );
                 },
               ),
