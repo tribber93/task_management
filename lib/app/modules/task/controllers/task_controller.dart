@@ -72,7 +72,7 @@ class TaskController extends GetxController {
           'task_id': FieldValue.arrayUnion([taskId])
         }, SetOptions(merge: true));
         Get.back();
-        Get.snackbar('Task', 'Successfully $type');
+        Get.snackbar('Task', 'Successfully ${type}ed');
       }).catchError((error) {
         Get.snackbar('Task', 'Failed to $type');
       });
@@ -82,14 +82,27 @@ class TaskController extends GetxController {
         'description': description,
         'dueDate': dueDate,
       }).whenComplete(() async {
-        await usersColl.doc(authCon.auth.currentUser!.email).set({
-          'task_id': FieldValue.arrayUnion([taskId])
-        }, SetOptions(merge: true));
+        // await usersColl.doc(authCon.auth.currentUser!.email).set({
+        //   'task_id': FieldValue.arrayUnion([taskId])
+        // }, SetOptions(merge: true));
         Get.back();
-        Get.snackbar('Task', 'Successfully $type');
+        Get.snackbar('Task', 'Successfully ${type}d');
       }).catchError((error) {
         Get.snackbar('Task', 'Failed to $type');
       });
     }
+  }
+
+  void deleteTask(String taskId) async {
+    CollectionReference taskColl = firestore.collection('task');
+    CollectionReference usersColl = firestore.collection('users');
+
+    await taskColl.doc(taskId).delete().whenComplete(() async {
+      await usersColl.doc(auth.currentUser!.email).set({
+        'task_id': FieldValue.arrayRemove([taskId])
+      }, SetOptions(merge: true));
+    });
+    Get.back();
+    Get.snackbar('Task', 'Successfully deleted');
   }
 }
