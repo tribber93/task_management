@@ -84,16 +84,19 @@ class MyFriends extends StatelessWidget {
                             return Column(
                               children: [
                                 ClipRRect(
-                                  borderRadius: BorderRadius.circular(100),
+                                  borderRadius: BorderRadius.circular(50),
                                   child: Image(
                                     image: NetworkImage(data!['photo']),
-                                    height: 155,
+                                    height: Get.width * 0.35,
+                                    width: Get.width * 0.4,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                                 Text(
                                   data['name'],
                                   style: const TextStyle(
-                                      color: CustomColor.primaryText),
+                                      color: CustomColor.primaryText,
+                                      fontSize: 25),
                                 )
                               ],
                             );
