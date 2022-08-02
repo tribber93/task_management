@@ -87,8 +87,14 @@ class MyFriends extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(50),
                                   child: Image(
                                     image: NetworkImage(data!['photo']),
-                                    height: Get.width * 0.35,
-                                    width: Get.width * 0.4,
+                                    height: context.isPhone
+                                        ? Get.width * 0.35
+                                        : !context.isPhone &&
+                                                Get.currentRoute == Routes.HOME
+                                            ? 95
+                                            : 165,
+                                    width:
+                                        context.isPhone ? Get.width * 0.4 : 200,
                                     fit: BoxFit.cover,
                                   ),
                                 ),

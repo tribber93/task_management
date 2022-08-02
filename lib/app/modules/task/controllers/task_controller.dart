@@ -12,16 +12,10 @@ class TaskController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final authCon = Get.find<AuthController>();
   FirebaseAuth auth = FirebaseAuth.instance;
-  late TextEditingController titleController,
-      descriptionController,
-      dueDateController;
 
   @override
   void onInit() {
     super.onInit();
-    titleController = TextEditingController();
-    descriptionController = TextEditingController();
-    dueDateController = TextEditingController();
   }
 
   @override
@@ -32,77 +26,5 @@ class TaskController extends GetxController {
   @override
   void onClose() {
     super.onClose();
-    titleController.dispose();
-    descriptionController.dispose();
-    dueDateController.dispose();
-  }
-
-  Future<void> saveUpdateTask(
-      {String? titel,
-      String? description,
-      String? dueDate,
-      String? docId,
-      String? type}) async {
-    print(titel);
-    print(description);
-    print(dueDate);
-    print(docId);
-    print(type);
-    final isValid = formKey.currentState!.validate();
-    if (!isValid) {
-      return;
-    }
-    formKey.currentState!.save();
-    CollectionReference taskColl = firestore.collection('task');
-    CollectionReference usersColl = firestore.collection('users');
-    var taskId = DateTime.now().toIso8601String();
-    if (type == 'Add') {
-      await taskColl.doc(taskId).set({
-        'title': titel,
-        'description': description,
-        'dueDate': dueDate,
-        'status': '0',
-        'total_task': '0',
-        'total_task_finished': '0',
-        'task_detail': [],
-        'asign_to': [authCon.auth.currentUser!.email],
-        'created_by': authCon.auth.currentUser!.email,
-      }).whenComplete(() async {
-        await usersColl.doc(authCon.auth.currentUser!.email).set({
-          'task_id': FieldValue.arrayUnion([taskId])
-        }, SetOptions(merge: true));
-        Get.back();
-        Get.snackbar('Task', 'Successfully ${type}ed');
-      }).catchError((error) {
-        Get.snackbar('Task', 'Failed to $type');
-      });
-    } else {
-      await taskColl.doc(docId).update({
-        'title': titel,
-        'description': description,
-        'dueDate': dueDate,
-      }).whenComplete(() async {
-        // await usersColl.doc(authCon.auth.currentUser!.email).set({
-        //   'task_id': FieldValue.arrayUnion([taskId])
-        // }, SetOptions(merge: true));
-        Get.back();
-        Get.snackbar('Task', 'Successfully ${type}d');
-      }).catchError((error) {
-        Get.snackbar('Task', 'Failed to $type');
-      });
-    }
-  }
-
-  void deleteTask(String taskId) async {
-    CollectionReference taskColl = firestore.collection('task');
-    CollectionReference usersColl = firestore.collection('users');
-
-    await taskColl.doc(taskId).delete().whenComplete(() async {
-      await usersColl.doc(auth.currentUser!.email).set({
-        'task_id': FieldValue.arrayRemove([taskId])
-      }, SetOptions(merge: true));
-    });
-    Get.back();
-    Get.snackbar('Task', 'Successfully deleted');
   }
 }

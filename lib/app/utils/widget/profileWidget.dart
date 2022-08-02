@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../data/controller/auth_controller.dart';
 import '../style/custom_colors.dart';
 
 class profileWidget extends StatelessWidget {
-  const profileWidget({
-    Key? key,
-  }) : super(key: key);
+  final authCon = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +13,14 @@ class profileWidget extends StatelessWidget {
       child: !context.isPhone
           ? Row(
               children: [
-                const Expanded(
+                Expanded(
                   flex: 1,
                   child: ClipRRect(
                     child: CircleAvatar(
                       backgroundColor: Colors.amber,
                       radius: 150,
-                      foregroundImage: NetworkImage(
-                          'https://pbs.twimg.com/profile_images/1488749186610728960/4POimDrS_400x400.jpg'),
+                      foregroundImage:
+                          NetworkImage(authCon.auth.currentUser!.photoURL!),
                     ),
                   ),
                 ),
@@ -33,17 +32,17 @@ class profileWidget extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
-                        'Hatori',
-                        style: TextStyle(
+                        authCon.auth.currentUser!.displayName!,
+                        style: const TextStyle(
                           color: CustomColor.primaryText,
                           fontSize: 35,
                         ),
                       ),
                       Text(
-                        'hatorininja@gmail.com',
-                        style: TextStyle(
+                        authCon.auth.currentUser!.email!,
+                        style: const TextStyle(
                           color: CustomColor.primaryText,
                           fontSize: 16,
                         ),
@@ -55,31 +54,31 @@ class profileWidget extends StatelessWidget {
             )
           : Center(
               child: Column(
-                children: const [
+                children: [
                   Expanded(
                     flex: 1,
                     child: ClipRRect(
                       child: CircleAvatar(
                         backgroundColor: Colors.amber,
                         radius: 150,
-                        foregroundImage: NetworkImage(
-                            'https://pbs.twimg.com/profile_images/1488749186610728960/4POimDrS_400x400.jpg'),
+                        foregroundImage:
+                            NetworkImage(authCon.auth.currentUser!.photoURL!),
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Text(
-                    'Hatori',
-                    style: TextStyle(
+                    authCon.auth.currentUser!.displayName!,
+                    style: const TextStyle(
                       color: CustomColor.primaryText,
                       fontSize: 35,
                     ),
                   ),
                   Text(
-                    'hatorininja@gmail.com',
-                    style: TextStyle(
+                    authCon.auth.currentUser!.email!,
+                    style: const TextStyle(
                       color: CustomColor.primaryText,
                       fontSize: 16,
                     ),

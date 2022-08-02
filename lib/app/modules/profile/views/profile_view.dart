@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:task_management/app/utils/style/custom_colors.dart';
 import 'package:task_management/app/utils/widget/myTask.dart';
+import 'package:task_management/app/utils/widget/peopleYouMayKnow.dart';
 
 import '../../../data/controller/auth_controller.dart';
 import '../../../routes/app_pages.dart';
@@ -15,7 +16,7 @@ import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
   final GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
-  final authC = Get.find<AuthController>();
+  final authCon = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,7 +82,7 @@ class ProfileView extends GetView<ProfileController> {
                                       child: const Text('Batal'),
                                     ),
                                     confirm: ElevatedButton(
-                                        onPressed: () => authC.logout(),
+                                        onPressed: () => authCon.logout(),
                                         child: const Text('Ya')),
                                   );
                                 },
@@ -121,11 +122,22 @@ class ProfileView extends GetView<ProfileController> {
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           profileWidget(),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const Text(
+                            'People You May Know',
+                            style: TextStyle(
+                                color: CustomColor.primaryText, fontSize: 30),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
                           SizedBox(
                             height: 220,
-                            child: MyTask(),
+                            child: PeopleYouMayKnow(),
                           )
                         ],
                       ),
